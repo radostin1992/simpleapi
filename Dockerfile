@@ -5,8 +5,8 @@ FROM eclipse-temurin:21.0.10_7-jdk-noble AS build
 ENV HOME=/usr/app
 RUN mkdir -p $HOME
 WORKDIR $HOME
-ADD . $HOME
-RUN --mount=type=cache,target=/root/.m2 ./mvnw -f $HOME/pom.xml clean package
+COPY . $HOME
+RUN --mount=type=cache,target=/root/.m2 chmod +x ./mvnw && ./mvnw -f $HOME/pom.xml clean package
 
 #
 # Package stage
