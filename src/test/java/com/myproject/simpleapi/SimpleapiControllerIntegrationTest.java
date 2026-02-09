@@ -18,6 +18,6 @@ public class SimpleapiControllerIntegrationTest {
   public void getHello() {
     client.get().uri("/").exchangeSuccessfully()
         .expectBody(String.class)
-        .isEqualTo("Greetings from Spring Boot!");
+        .isEqualTo("Greetings from simple api Spring Boot application!");
   }
 }

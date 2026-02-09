@@ -25,14 +25,7 @@ public class SimpleapiControllerTest {
   public void getHello() throws Exception {
     mvc.perform(get("/").accept(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
-        .andExpect(content().string(equalTo("Greetings from Spring Boot!")));
-  }
-
-  @Test
-  public void getMyHello() throws Exception {
-    mvc.perform(get("/radotest").accept(MediaType.APPLICATION_JSON))
-        .andExpect(status().isOk())
-        .andExpect(content().string(equalTo("My test here from spring boot")));
+        .andExpect(content().string(equalTo("Greetings from simple api Spring Boot application!")));
   }
 
   @Test
