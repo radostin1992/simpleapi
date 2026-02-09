@@ -25,13 +25,14 @@ public class SimpleapiApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SimpleapiApplication.class, args);
 
-		System.out.println("Let's inspect the beans provided by Spring Boot:");
+		System.out.println("Found " + ctx.getBeanDefinitionCount() + " beans provided by Spring Boot:");
 
-		String[] beanNames = ctx.getBeanDefinitionNames();
-		Arrays.sort(beanNames);
-		for (String beanName : beanNames) {
-			System.out.println(beanName);
-		}
+		// For debugging purposes, print all the beans provided by Spring Boot
+		// String[] beanNames = ctx.getBeanDefinitionNames();
+		// Arrays.sort(beanNames);
+		// for (String beanName : beanNames) {
+		// 	System.out.println(beanName);
+		// }
 	}
 
 }
