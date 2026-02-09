@@ -1,17 +1,18 @@
 #
 # Build stage
 #
-FROM maven:3-eclipse-temurin-21 AS build
-COPY src /home/app/src
-COPY pom.xml /home/app
-RUN mvn -f /home/app/pom.xml clean package
+FROM eclipse-temurin:21.0.10_7-jdk-noble AS build
+ENV HOME=/usr/app
+RUN mkdir -p $HOME
+WORKDIR $HOME
+ADD . $HOME
+RUN --mount=type=cache,target=/root/.m2 ./mvnw -f $HOME/pom.xml clean package
 
 #
 # Package stage
 #
-FROM maven:3-eclipse-temurin-21
-RUN addgroup spring_group && useradd -G spring_group spring
-USER spring:spring
-COPY --from=build /home/app/target/simpleapi-0.0.1-SNAPSHOT.jar /usr/local/lib/simpleapi.jar
+FROM eclipse-temurin:21.0.10_7-jre-noble 
+ARG JAR_FILE=/usr/app/target/*.jar
+COPY --from=build $JAR_FILE /app/runner.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/usr/local/lib/simpleapi.jar"]
+ENTRYPOINT ["java", "-jar", "/app/runner.jar"]
