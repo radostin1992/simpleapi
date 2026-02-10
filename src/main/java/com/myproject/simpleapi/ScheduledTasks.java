@@ -18,8 +18,8 @@ public class ScheduledTasks {
 
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
-    // every 15 minutes
-	@Scheduled(fixedRate = 900000)
+    // every 10 minutes
+	@Scheduled(fixedRate = 600000)
 	public void reportCurrentTime() {
         // make request to actuator health endpoint and log the response
         RestTemplate restTemplate = new RestTemplate();
