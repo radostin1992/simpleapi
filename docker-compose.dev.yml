@@ -1,0 +1,14 @@
+services:
+  app:
+    container_name: simpleapi-dev-container
+    image: eclipse-temurin:25.0.2_10-jdk-noble
+    build: .
+    working_dir: /app
+    volumes:
+      - .:/app
+      - ~/.m2:/root/.m2
+    ports:
+      - "8080:8080"
+    command: >
+      sh -c "chmod +x mvnw &&
+             ./mvnw spring-boot:run"

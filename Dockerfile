@@ -1,7 +1,7 @@
 #
 # Build stage
 #
-FROM eclipse-temurin:21.0.10_7-jdk-noble AS build
+FROM eclipse-temurin:25.0.2_10-jdk-noble AS build
 ENV HOME=/usr/app
 RUN mkdir -p $HOME
 WORKDIR $HOME
@@ -11,7 +11,7 @@ RUN --mount=type=cache,target=/root/.m2 chmod +x ./mvnw && ./mvnw -f $HOME/pom.x
 #
 # Package stage
 #
-FROM eclipse-temurin:21.0.10_7-jre-noble 
+FROM eclipse-temurin:25.0.2_10-jre-noble 
 ARG JAR_FILE=/usr/app/target/*.jar
 COPY --from=build $JAR_FILE /app/runner.jar
 EXPOSE 8080

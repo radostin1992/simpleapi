@@ -19,9 +19,15 @@ public class SimpleapiApplication {
 	 * - rebuild app - ./mvnw clean install
 	 * - curl from terminal - curl http://localhost:8080
 	 * 
-	 * To test "production" (docker container) that is uesed in render.com:
-	 * - docker build -t springio/simpleapi-docker .
-	 * - docker run -p 8080:8080 springio/simpleapi-docker
+	 * Development with docker:
+	 * - to start the application in a docker container with hot reload - 
+	 * 		docker compose -f docker-compose.dev.yml up
+	 * - to stop the application in a docker container 
+	 * 		docker compose -f docker-compose.dev.yml down
+	 * 
+	 * To test "production" (docker container) that is used in render.com:
+	 * - docker build -t myproject/simpleapi-prod .
+	 * - docker run -p 8080:8080 myproject/simpleapi-prod
 	 * 
 	 * todo and ideas:
 	 * - secure the spring endpoints
