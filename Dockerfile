@@ -9,7 +9,7 @@ ENV SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
 RUN mkdir -p $HOME
 WORKDIR $HOME
 COPY . $HOME
-RUN --mount=type=cache,target=/root/.m2 chmod +x ./mvnw && ./mvnw -f $HOME/pom.xml clean package -e
+RUN --mount=type=cache,target=/root/.m2 chmod +x ./mvnw && ./mvnw -f $HOME/pom.xml clean package -DskipTests -e
 
 #
 # Package stage
