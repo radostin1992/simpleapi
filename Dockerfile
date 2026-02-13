@@ -6,7 +6,7 @@ ENV HOME=/usr/app
 RUN mkdir -p $HOME
 WORKDIR $HOME
 COPY . $HOME
-RUN --mount=type=cache,target=/root/.m2 chmod +x ./mvnw && ./mvnw -f $HOME/pom.xml clean package
+RUN --mount=type=cache,target=/root/.m2 chmod +x ./mvnw && ./mvnw -f $HOME/pom.xml clean package -e
 
 #
 # Package stage
