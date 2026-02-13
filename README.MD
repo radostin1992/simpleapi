@@ -16,10 +16,11 @@ Core objectives:
 - [x] Containerized the application (https://spring.io/guides/gs/spring-boot-docker)
 - [x] Deployed the api (the choosen service is https://render.com/)
 - [x] Added basic logging and formating in files
-- [x] Added hot realoding/swapping of the working files
+- [x] Added hot realoding/swapping of the working files (https://docs.spring.io/spring-boot/reference/using/devtools.html#using.devtools.restart.customizing-the-classload and https://docs.spring.io/spring-boot/how-to/hotswapping.html#page-title)
 - [x] Prepared the application for more services by adding composer.yml
 - [x] Upgraded the java (from 21 to 25)
-- [x] Added a README file 
+- [x] Added a README file
+- [x] Added database with credentials taken from .env file (not published)
 
 ### Basic Info
 #### run the application (local installation for development without other services)
@@ -40,6 +41,7 @@ Core objectives:
 #### Test with cURL from terminal
 ```bash
 curl http://localhost:8080
+curl http://localhost:8080/user?id=1
 ```
 
 ### Development with Docker
@@ -64,7 +66,7 @@ docker run -p 8080:8080 myproject/simpleapi-prod
 ```
 
 ### TODO & Ideas
-- [ ] Add database and migrator application (Flyway)
+- [ ] Add migrator application (Flyway)
 - [ ] Add Open api 
 - [ ] Secure the Spring endpoints
 - [ ] Add more endpoints (POST, PUT, DELETE)

@@ -2,7 +2,6 @@ services:
   app:
     container_name: simpleapi-dev-container
     image: eclipse-temurin:25.0.2_10-jdk-noble
-    build: .
     working_dir: /app
     volumes:
       - .:/app
@@ -12,3 +11,25 @@ services:
     command: >
       sh -c "chmod +x mvnw &&
              ./mvnw spring-boot:run"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/${POSTGRES_DB}
+      - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER}
+      - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db:
+    image: 'postgres:18'
+    container_name: db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/etc/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
+volumes:
+  db-data:
