@@ -2,7 +2,24 @@
 # SimpleAPI
 What it will do - nobody knows ... ¯¯\\_(ツ)_/¯¯ 
 
-The main idea is to exercise what I've seen and what I've learned 
+Core objectives:
+- Apply and reinforce practical knowledge and best practices
+- Use only free-tier or open-source services (no paid dependencies)
+- Serve as the backend component of a full-stack project
+- Minimize AI-generated code to ensure hands-on learning and implementation
+
+### What's already done:
+- [x] Created simple java spring project (https://start.spring.io/)
+- [x] Added some basic functionality with tests (https://spring.io/guides/gs/spring-boot#initial)
+- [x] Served health enpoint from the actuator (basic monitoring)
+- [x] Added cron job (initial idea to keep the free server running https://spring.io/guides/gs/scheduling-tasks)
+- [x] Containerized the application (https://spring.io/guides/gs/spring-boot-docker)
+- [x] Deployed the api (the choosen service is https://render.com/)
+- [x] Added basic logging and formating in files
+- [x] Added hot realoding/swapping of the working files
+- [x] Prepared the application for more services by adding composer.yml
+- [x] Upgraded the java (from 21 to 25)
+- [x] Added a README file 
 
 ### Basic Info
 #### run the application (local installation for development without other services)
@@ -47,19 +64,8 @@ docker run -p 8080:8080 myproject/simpleapi-prod
 ```
 
 ### TODO & Ideas
-
-- [ ] Secure the Spring endpoints
 - [ ] Add database and migrator application (Flyway)
+- [ ] Add Open api 
+- [ ] Secure the Spring endpoints
 - [ ] Add more endpoints (POST, PUT, DELETE)
-- [ ] Add more complex logic (external API calls, data processing, etc.)
-
-### What's done:
-- [x] Created simple java spring project
-- [x] Added some basic functionality with tests
-- [x] Served health enpoint from the actuator (basic monitoring)
-- [x] Added cron job (initial idea to keep the free server running)
-- [x] Added basic logging and formating in files
-- [x] Containerized the application
-- [x] Added hot realoding/swapping of the working files
-- [x] Prepared the application for more services by adding composer.yml
-- [x] Upgraded the java (from 21 to 25)  
+- [ ] Add more complex logic (external API calls, data processing, etc.) 
