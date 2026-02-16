@@ -7,9 +7,11 @@ import static org.awaitility.Awaitility.await;
 import org.awaitility.Durations;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 
 @SpringBootTest
+@ActiveProfiles("tests")
 public class ScheduledTasksTest {
     
     @MockitoSpyBean

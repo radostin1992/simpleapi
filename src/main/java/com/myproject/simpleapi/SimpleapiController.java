@@ -28,4 +28,30 @@ public class SimpleapiController {
         logger.info("Received request for joke endpoint");
         return jokes[randomIndex];
     }
+
+    @GetMapping("/be-my-valentine")
+    public String beMyValentine() {
+
+        return "<html>" +
+                "<head>" +
+                "<style>" +
+                "body {" +
+                "  display: flex;" +
+                "  justify-content: center;" +
+                "  align-items: center;" +
+                "  height: 100vh;" +
+                "  background-color: #ffe6e6;" +
+                "}" +
+    
+                "@keyframes beat {" +
+                "  0%, 100% { transform: scale(1) rotate(-45deg); }" +
+                "  50% { transform: scale(1.2) rotate(-45deg); }" +
+                "}" +
+                "</style>" +
+                "</head>" +
+                "<body>" +
+                "<div> <h1>Honey, be my valentine!</h1></div>" +
+                "</body>" +
+                "</html>";
+    }
 }
