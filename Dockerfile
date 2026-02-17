@@ -14,6 +14,5 @@ RUN --mount=type=cache,target=/root/.m2 chmod +x ./mvnw && ./mvnw -f $HOME/pom.x
 FROM eclipse-temurin:25.0.2_10-jre-noble 
 ARG JAR_FILE=/usr/app/target/*.jar
 COPY --from=build $JAR_FILE /app/runner.jar
-COPY --from=build /usr/app/src/main/resources/db/migration /app/db/migration
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app/runner.jar"]
