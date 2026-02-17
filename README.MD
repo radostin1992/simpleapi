@@ -20,7 +20,8 @@ Core objectives:
 - [x] Prepared the application for more services by adding composer.yml
 - [x] Upgraded the java (from 21 to 25)
 - [x] Added a README file
-- [x] Added database with credentials taken from .env file (not published)
+- [x] Added database with credentials taken from .env file (not published) https://www.baeldung.com/spring-boot-postgresql-docker
+- [x] Add migrator application (Flyway) ( https://medium.com/@AlexanderObregon/using-spring-boot-with-flyway-to-manage-database-migrations-8180ce0c9230 and https://davidbytyqi.medium.com/simplifying-database-migrations-with-flyway-and-docker-42ef5a971178)
 
 ### Basic Info
 #### run the application (local installation for development without other services)
@@ -66,7 +67,6 @@ docker run -p 8080:8080 myproject/simpleapi-prod
 ```
 
 ### TODO & Ideas
-- [ ] Add migrator application (Flyway)
 - [ ] Add Open api 
 - [ ] Secure the Spring endpoints
 - [ ] Add more endpoints (POST, PUT, DELETE)

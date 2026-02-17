@@ -32,7 +32,7 @@ public class UsersControllerTest {
     public void getUser() throws Exception {
         User user = new User();
         user.setId(1L);
-        user.setFirstName("John");
+        user.setName("John");
         user.setEmail("john@example.com");
 
         when(usersRepository.findById(1L)).thenReturn(java.util.Optional.of(user));
@@ -40,6 +40,6 @@ public class UsersControllerTest {
         mvc.perform(get("/user").param("id", "1").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content()
-                        .string(equalTo("User found: " + user.getFirstName() + " with email " + user.getEmail())));
+                        .string(equalTo("User found: " + user.getName() + " with email " + user.getEmail())));
     }
 }

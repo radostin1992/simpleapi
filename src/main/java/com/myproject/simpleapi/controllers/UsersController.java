@@ -28,6 +28,6 @@ public class UsersController {
             return "User not found";
         }
 
-        return "User found: " + user.getFirstName() + " with email " + user.getEmail();
+        return "User found: " + user.getName() + " with email " + user.getEmail();
     }
 }

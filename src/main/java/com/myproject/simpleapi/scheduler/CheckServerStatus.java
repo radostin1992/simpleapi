@@ -1,4 +1,4 @@
-package com.myproject.simpleapi;
+package com.myproject.simpleapi.scheduler;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,12 +9,12 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.myproject.simpleapi.Actuator.ServerHealth;
+import com.myproject.simpleapi.actuator.ServerHealth;
 
 @Component
-public class ScheduledTasks {
+public class CheckServerStatus {
 
-	private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
+	private static final Logger log = LoggerFactory.getLogger(CheckServerStatus.class);
 
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 

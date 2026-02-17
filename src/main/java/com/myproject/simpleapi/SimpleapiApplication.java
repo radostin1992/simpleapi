@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class SimpleapiApplication {
 
 	public static void main(String[] args) {
-		Logger logger = LoggerFactory.getLogger(SimpleapiController.class);
+		Logger logger = LoggerFactory.getLogger(SimpleapiApplication.class);
 
 		ApplicationContext ctx = SpringApplication.run(SimpleapiApplication.class, args);
 
