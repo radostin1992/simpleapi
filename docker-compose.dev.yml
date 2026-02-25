@@ -31,13 +31,6 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
-  flyway:
-    image: flyway/flyway:latest
-    depends_on:
-      - db
-    entrypoint: ["flyway", "-url=jdbc:postgresql://db:5432/${POSTGRES_DB}", "-user=${POSTGRES_USER}", "-password=${POSTGRES_PASSWORD}", "-baselineOnMigrate=true", "migrate"]
-    volumes:
-      - ./src/main/resources/db/migration:/flyway/sql
 
 volumes:
   db-data:  

@@ -1,0 +1,155 @@
+openapi: "3.0.0"
+info:
+  title: SimpleAPI
+  description: "Nobody knows what it will do"
+  version: "1.0.0"
+
+paths:
+#Base
+  /:
+    get:
+      summary: Welcome message
+      operationId: index
+      tags:
+        - general
+      responses:
+        '200':
+          description: Welcome message
+          content:
+            text/plain:
+              schema:
+                type: string
+#Jokes                
+  /joke:
+    get:
+      summary: Get a random joke
+      operationId: joke
+      tags:
+        - general
+      responses:
+        '200':
+          description: A random joke
+          content:
+            text/plain:
+              schema:
+                type: string
+#Users                
+  /user:
+    get:
+      summary: Retrieve a user
+      operationId: getUser
+      tags:
+        - users
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A user object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '404':
+          description: User not found
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+
+    post:
+      summary: Create a new user
+      operationId: createUser
+      tags:
+        - users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+    
+    patch:
+      summary: Update an existing user
+      operationId: updateUser
+      tags:
+        - users
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '304':
+          description: User not modified
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+    
+    delete:
+      summary: Delete a user
+      operationId: deleteUser
+      tags:
+        - users
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User deleted successfully
+        '400':
+          description: Bad request
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: long
+        name:
+          type: string
+        email:
+          type: string
+    UserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
