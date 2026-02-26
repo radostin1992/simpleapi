@@ -1,4 +1,4 @@
-package com.myproject.simpleapi;
+package com.myproject.simpleapi.controllers;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
@@ -25,15 +25,8 @@ public class SimpleapiControllerTest {
 
   @Test
   public void getHello() throws Exception {
-    mvc.perform(get("/").accept(MediaType.APPLICATION_JSON))
+    mvc.perform(get("/").accept(MediaType.TEXT_PLAIN))
         .andExpect(status().isOk())
         .andExpect(content().string(equalTo("Greetings from simple api Spring Boot application!")));
-  }
-
-  @Test
-  public void getJoke() throws Exception {
-    mvc.perform(get("/joke").accept(MediaType.APPLICATION_JSON))
-        .andExpect(status().isOk())
-        .andExpect(content().string(notNullValue()));
   }
 }

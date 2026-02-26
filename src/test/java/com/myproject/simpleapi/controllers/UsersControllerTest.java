@@ -1,4 +1,4 @@
-package com.myproject.simpleapi;
+package com.myproject.simpleapi.controllers;
 
 import org.springframework.http.MediaType;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ public class UsersControllerTest {
     private UsersRepository usersRepository;
 
     @Test
-    public void getUser() throws Exception {
+    public void getExistingUser() throws Exception {
         User user = new User();
         user.setId(1L);
         user.setName("John");
@@ -39,7 +39,14 @@ public class UsersControllerTest {
 
         mvc.perform(get("/user").param("id", "1").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content()
-                        .string(equalTo("User found: " + user.getName() + " with email " + user.getEmail())));
+                .andExpect(content().string(equalTo("{\"email\":\"john@example.com\",\"id\":1,\"name\":\"John\"}")));
+    }
+
+    @Test
+    public void getNonExistingUser() throws Exception {
+        when(usersRepository.findById(1L)).thenReturn(java.util.Optional.empty());
+
+        mvc.perform(get("/user").param("id", "1").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
     }
 }
