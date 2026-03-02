@@ -24,6 +24,7 @@ Core objectives:
 - [x] Added migrator application (Flyway) ( https://medium.com/@AlexanderObregon/using-spring-boot-with-flyway-to-manage-database-migrations-8180ce0c9230 and https://davidbytyqi.medium.com/simplifying-database-migrations-with-flyway-and-docker-42ef5a971178)
 - [x] Added OpenAPI Generator to generate api server side (https://www.baeldung.com/java-openapi-generator-server)
 - [x] Added more endpoints to cover basic CRUD operations
+- [x] Open api expose the swagger ui (https://www.baeldung.com/spring-rest-openapi-documentation)
 
 ### Basic Info
 #### run the application (local installation for development without other services)
@@ -69,8 +70,6 @@ docker run -p 8080:8080 myproject/simpleapi-prod
 ```
 
 ### TODO & Ideas
-- [ ] Fix existing and add tests for the newly added endpoints
-- [ ] Open api expose the swagger ui
 - [ ] Secure the Spring endpoints
 - [ ] Add more complex logic (external API calls, data processing, etc.)
 - [ ] Tests coverage report via github workflow ? 
