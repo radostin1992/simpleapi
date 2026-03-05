@@ -25,6 +25,7 @@ Core objectives:
 - [x] Added OpenAPI Generator to generate api server side (https://www.baeldung.com/java-openapi-generator-server)
 - [x] Added more endpoints to cover basic CRUD operations
 - [x] Open api expose the swagger ui (https://www.baeldung.com/spring-rest-openapi-documentation)
+- [x] Secure the Spring endpoints (https://dev.to/jps27cse/spring-security-for-beginners-the-easiest-guide-youll-ever-read-2cib)
 
 ### Basic Info
 #### run the application (local installation for development without other services)
@@ -44,9 +45,15 @@ Core objectives:
 
 #### Test with cURL from terminal
 ```bash
-curl http://localhost:8080
-curl http://localhost:8080/user?id=1
+curl http://localhost:8080 -H 'Authorization: Basic c3dhZ2dlcjpzd2FnZ2VyMTIz'
+curl http://localhost:8080/user?id=1 -H 'Authorization: Basic c3dhZ2dlcjpzd2FnZ2VyMTIz'
 ```
+NOTE: Using 'swagger' authentication
+
+### Test from swagger UI page
+Go to https://simpleapi-11av.onrender.com/swagger-ui.html or http://localhost:8080/swagger-ui.html on local env
+and for username use: 'swagger' for password use 'swagger123'
+NOTE: deleting is forbidden 
 
 ### Development with Docker
 
@@ -70,6 +77,5 @@ docker run -p 8080:8080 myproject/simpleapi-prod
 ```
 
 ### TODO & Ideas
-- [ ] Secure the Spring endpoints
 - [ ] Add more complex logic (external API calls, data processing, etc.)
 - [ ] Tests coverage report via github workflow ? 
