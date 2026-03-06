@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -30,5 +31,13 @@ public class SimpleapiControllerTest {
     mvc.perform(get("/").accept(MediaType.TEXT_PLAIN).headers(authenticator.getAuthenticatedHeader()))
         .andExpect(status().isOk())
         .andExpect(content().string(equalTo("Greetings from simple api Spring Boot application!")));
+  }
+
+  @Test
+  public void tryGettingHelloUnauthenticated() throws Exception {
+    HttpHeaders headers = new HttpHeaders();
+    headers.setBasicAuth("fake", "fake");
+    mvc.perform(get("/").accept(MediaType.TEXT_PLAIN).headers(headers))
+        .andExpect(status().isUnauthorized());
   }
 }
