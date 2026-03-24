@@ -26,6 +26,8 @@ paths:
       operationId: joke
       tags:
         - general
+      parameters:
+          - $ref: '#/components/parameters/JokeTypeParam'
       responses:
         '200':
           description: A random joke
@@ -33,6 +35,8 @@ paths:
             text/plain:
               schema:
                 type: string
+        '400':
+          description: Bad request
 #Users                
   /user:
     get:
@@ -153,3 +157,16 @@ components:
           type: string
         email:
           type: string
+    
+  parameters:
+    JokeTypeParam:
+      name: joketype
+      in: query
+      required: true
+      schema:
+        type: string
+        enum:
+          - general
+          - knock-knock
+          - programming
+          - dad

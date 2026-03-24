@@ -26,6 +26,7 @@ Core objectives:
 - [x] Added more endpoints to cover basic CRUD operations
 - [x] Open api expose the swagger ui (https://www.baeldung.com/spring-rest-openapi-documentation)
 - [x] Secure the Spring endpoints (https://dev.to/jps27cse/spring-security-for-beginners-the-easiest-guide-youll-ever-read-2cib)
+- [x] Making external API calls (jokes are now taken from https://www.freepublicapis.com/official-joke-api)
 
 ### Basic Info
 #### run the application (local installation for development without other services)
@@ -73,7 +74,7 @@ Build and run the production container (as used in render.com):
 
 ```bash
 docker build -t myproject/simpleapi-prod .
-docker run -p 8080:8080 myproject/simpleapi-prod
+docker run -p 8080:8080 --env-file .env-prod myproject/simpleapi-prod
 ```
 
 ### TODO & Ideas
