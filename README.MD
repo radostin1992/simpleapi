@@ -27,6 +27,7 @@ Core objectives:
 - [x] Open api expose the swagger ui (https://www.baeldung.com/spring-rest-openapi-documentation)
 - [x] Secure the Spring endpoints (https://dev.to/jps27cse/spring-security-for-beginners-the-easiest-guide-youll-ever-read-2cib)
 - [x] Making external API calls (jokes are now taken from https://www.freepublicapis.com/official-joke-api)
+- [x] Implement AI into the api using LangChain4j calling GitHub free models (https://github.com/microsoft/LangChain4j-for-Beginners)
 
 ### Basic Info
 #### run the application (local installation for development without other services)

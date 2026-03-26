@@ -139,6 +139,33 @@ paths:
         '500':
           description: Internal server error
 
+#AI-assistant
+  /ai/ask:
+    post:
+      summary: Ask simple question (no memory)
+      operationId: aiAsk
+      tags:
+        - AI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AiAskRequest'
+      responses:
+        '200':
+          description: AI response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AiAskResponse'
+        '404':
+          description: User not found
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+
 components:
   schemas:
     UserResponse:
@@ -156,6 +183,17 @@ components:
         name:
           type: string
         email:
+          type: string
+
+    AiAskRequest:
+      type: object
+      properties:
+        prompt:
+          type: string
+    AiAskResponse:
+      type: object
+      properties:
+        reponse:
           type: string
     
   parameters:
