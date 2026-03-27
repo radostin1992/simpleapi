@@ -24,9 +24,22 @@ public class AiAssistantController implements AiApi {
     @Override
     public ResponseEntity<AiAskResponse> aiAsk(AiAskRequest aiAskRequest) {
         logger.info("AI ask request received");
-        AiAskResponse aiAskResponse = new AiAskResponse();    
 
-        aiAskResponse.setReponse(aiAssistantService.ask(aiAskRequest.getPrompt()));
+        String prompt = aiAskRequest.getPrompt();
+        if (prompt == null || prompt.isBlank()) {
+            logger.warn("Invalid prompt message");
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+
+        String aiResponse = aiAssistantService.ask(prompt);
+
+        if (aiResponse == null) {
+            logger.warn("Problem with getting result from the AI model");
+            return ResponseEntity.status(HttpStatus.FAILED_DEPENDENCY).body(null);
+        }
+
+        AiAskResponse aiAskResponse = new AiAskResponse();
+        aiAskResponse.setReponse(aiResponse);
 
         return ResponseEntity.status(HttpStatus.OK).body(aiAskResponse);
     }
