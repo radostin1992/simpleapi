@@ -169,6 +169,37 @@ paths:
                 type: string
         '500':
           description: Internal server error
+  /ai/conversation:
+    post:
+      summary: Do a conversation with the AI. 
+              There is 10 message memory configured. It can be used by sending the conversationId. 
+              If it's your first prompt just leave it empty and it will be generated for you.
+      operationId: AiConversation
+      tags:
+        - AI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AiConversationRequest'
+      responses:
+        '200':
+          description: AI response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AiConversationResponse'
+        '400':
+          description: Bad request
+        '424':
+          description: Problem with getting result from the AI model
+          content:
+            application/json:
+              schema:
+                type: string
+        '500':
+          description: Internal server error
 
 components:
   schemas:
@@ -198,6 +229,20 @@ components:
       type: object
       properties:
         reponse:
+          type: string
+    AiConversationRequest:
+      type: object
+      properties:
+        prompt:
+          type: string
+        conversationId:
+          type: string
+    AiConversationResponse:
+      type: object
+      properties:
+        response:
+          type: string
+        conversationId:
           type: string
     
   parameters:
