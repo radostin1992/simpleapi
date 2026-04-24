@@ -3,10 +3,12 @@ package com.myproject.simpleapi.configs;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import dev.langchain4j.model.openaiofficial.OpenAiOfficialChatModel;
 
 @Configuration
+@Profile("default")
 public class LangChainConfig {
 
     @Value("${GITHUB_TOKEN}")

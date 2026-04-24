@@ -29,6 +29,13 @@ public class AiAssistantService {
 
     }
 
+    /** 
+     * Simple ask AI endpoint no context saved.
+     * Workflow - ask -> get Ai response - nothing is stored in memory
+     * 
+     *  @param prompt is the question you want to ask the AI model 
+     *  @return AI answer
+     * */
     public String ask(String prompt) {
         String answer = chatModel.chat(prompt);
 

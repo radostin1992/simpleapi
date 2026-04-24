@@ -29,7 +29,7 @@ public class AiAssistantController implements AiApi {
         String prompt = aiAskRequest.getPrompt();
         if (prompt == null || prompt.isBlank()) {
             logger.warn("Invalid prompt message");
-            ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
 
         String aiResponse = aiAssistantService.ask(prompt);
@@ -52,7 +52,7 @@ public class AiAssistantController implements AiApi {
         String prompt = aiAskRequest.getPrompt();
         if (prompt == null || prompt.isBlank()) {
             logger.warn("Invalid prompt message");
-            ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
 
         String conversationId = aiAskRequest.getConversationId();
